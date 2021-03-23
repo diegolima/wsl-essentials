@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FULL_ADDRESS="$1"
+
+host=$(echo $FULL_ADDRESS|cut -f3 -d/|cut -f1 -d:)
+port=$(echo $FULL_ADDRESS|cut -f3 -d:|cut -f1 -d/)
+
+if [ ! -z "$port" ]; then
+    conn="$host:$port"
+else
+    conn="$host"
+fi
+
+
+ssh $conn || sleep 10
