@@ -24,4 +24,4 @@ If Not CheckCommandIsRunning("vcxsrv.exe") Then
 End If
 
 SilentlyStartCommand "C:\Windows\System32\Bash.exe -ic 'sudo service dbus start'"
-SilentlyStartCommand "C:\Windows\System32\Bash.exe -ic ""cd /root; DISPLAY=192.168.16.1:0 dbus-launch gnome-terminal"""
+SilentlyStartCommand "C:\Windows\System32\Bash.exe -ic ""cd /root; DISPLAY=$(ip route show|grep ^default|awk '{print $3}'):0 dbus-launch gnome-terminal"""
